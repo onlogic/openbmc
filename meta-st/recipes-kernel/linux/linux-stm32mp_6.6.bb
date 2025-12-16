@@ -78,6 +78,8 @@ KERNEL_CONFIG_FRAGMENTS:aarch64 = " \
 
 KERNEL_CONFIG_FRAGMENTS:append = " ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', '${UNPACKDIR}/fragments/${LINUX_VERSION}/fragment-03-systemd.config', '', d)} "
 KERNEL_CONFIG_FRAGMENTS:append = " ${UNPACKDIR}/fragments/${LINUX_VERSION}/fragment-04-modules.config"
+KERNEL_CONFIG_FRAGMENTS:append = " ${UNPACKDIR}/fragments/${LINUX_VERSION}/fragment-05-overlay.config"
+KERNEL_CONFIG_FRAGMENTS:append = " ${UNPACKDIR}/fragments/${LINUX_VERSION}/fragment-06-coredump.config"
 KERNEL_CONFIG_FRAGMENTS:append = " ${@oe.utils.ifelse(d.getVar('KERNEL_SIGN_ENABLE') == '1', '${UNPACKDIR}/fragments/features/${LINUX_VERSION}/optional-fragment-05-signature.config','')} "
 KERNEL_CONFIG_FRAGMENTS:append = " ${@bb.utils.contains('MACHINE_FEATURES', 'efi', '${UNPACKDIR}/fragments/features/${LINUX_VERSION}/optional-fragment-07-efi.config', '', d)} "
 KERNEL_CONFIG_FRAGMENTS:append:arm = " ${@bb.utils.contains('MACHINE_FEATURES', 'nosmp', '${UNPACKDIR}/fragments/features/${LINUX_VERSION}/optional-fragment-06-nosmp.config', '', d)} "
@@ -85,6 +87,8 @@ KERNEL_CONFIG_FRAGMENTS:append:arm = " ${@bb.utils.contains('MACHINE_FEATURES', 
 
 SRC_URI += "file://${LINUX_VERSION}/fragment-03-systemd.config;subdir=fragments"
 SRC_URI += "file://${LINUX_VERSION}/fragment-04-modules.config;subdir=fragments"
+SRC_URI += "file://${LINUX_VERSION}/fragment-05-overlay.config;subdir=fragments"
+SRC_URI += "file://${LINUX_VERSION}/fragment-06-coredump.config;subdir=fragments"
 SRC_URI += "file://${LINUX_VERSION}/optional-fragment-05-signature.config;subdir=fragments/features"
 SRC_URI += "file://${LINUX_VERSION}/optional-fragment-06-nosmp.config;subdir=fragments/features"
 SRC_URI += "file://${LINUX_VERSION}/optional-fragment-07-efi.config;subdir=fragments/features"
@@ -92,6 +96,8 @@ SRC_URI += "file://${LINUX_VERSION}/optional-fragment-07-efi.config;subdir=fragm
 # Don't forget to add/del for devupstream
 SRC_URI:class-devupstream += "file://${LINUX_VERSION}/fragment-03-systemd.config;subdir=fragments"
 SRC_URI:class-devupstream += "file://${LINUX_VERSION}/fragment-04-modules.config;subdir=fragments"
+SRC_URI:class-devupstream += "file://${LINUX_VERSION}/fragment-05-overlay.config;subdir=fragments"
+SRC_URI:class-devupstream += "file://${LINUX_VERSION}/fragment-06-coredump.config;subdir=fragments"
 SRC_URI:class-devupstream += "file://${LINUX_VERSION}/optional-fragment-05-signature.config;subdir=fragments/features"
 SRC_URI:class-devupstream += "file://${LINUX_VERSION}/optional-fragment-06-nosmp.config;subdir=fragments/features"
 SRC_URI:class-devupstream += "file://${LINUX_VERSION}/optional-fragment-07-efi.config;subdir=fragments/features"

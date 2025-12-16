@@ -7,7 +7,4 @@ SRC_URI += " \
     file://${LINUX_VERSION}/${LINUX_VERSION}${LINUX_SUBVERSION}/0001-arm64-dts-st-add-default-LED-configuration-for-OBMC.patch \
     file://${LINUX_VERSION}/${LINUX_VERSION}${LINUX_SUBVERSION}/0002-Force-USB-PD-mode-to-peripheral.patch \
     file://${LINUX_VERSION}/${LINUX_VERSION}${LINUX_SUBVERSION}/0003-Alias-added-to-set-mmc0-to-eMMC.patch \
-    file://0001-config-overlayfs-as-static.fragment \
     "
-
-KERNEL_CONFIG_FRAGMENTS:append = "${UNPACKDIR}/0001-config-overlayfs-as-static.fragment"
