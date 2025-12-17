@@ -17,7 +17,7 @@ part u-boot-env --source empty --part-name=u-boot-env --ondisk mmcblk --fixed-si
 
 part --fstype=ext4 --fixed-size 64M --source bootimg-partition --label boot-a
 part --fstype=ext4 --fixed-size 64M --source bootimg-partition --label boot-b
-part --fstype=ext4 --fixed-size 512M --source rootfs --label rofs-a
-part --fstype=ext4 --fixed-size 512M --source rootfs --label rofs-b
+part --fstype=ext4 --fixed-size 1G --source rootfs --label rofs-a
+part --fstype=ext4 --fixed-size 1G --source rootfs --label rofs-b
 part --fstype=ext4 --fixed-size 1G --label rwfs
-part --fstype=ext4 --fixed-size 1G --source rootfs --rootfs-dir=${DEPLOY_DIR_IMAGE}/hostfw/image/ --label hostfw
+part --fstype=ext4 --fixed-size 512M --source rootfs --rootfs-dir=${DEPLOY_DIR_IMAGE}/hostfw/image/ --label hostfw
